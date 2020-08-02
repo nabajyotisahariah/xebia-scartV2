@@ -6,7 +6,8 @@
   "scripts": {
     "webpack-dev-server": "webpack-dev-server",
     "dev": "webpack-dev-server --mode=development --config ./webpack.client.js",
-    "prod": "webpack --mode=production --config ./webpack.client.js"
+    "prod": "webpack --mode=production --config ./webpack.client.js",
+    "api": "node ./server/bin/www"
   },
   "repository": {
     "type": "git",

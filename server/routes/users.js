@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const request = require('request');
-//import util from '../common/util';
-//console.log(" util ",util)
+//import utils from '../common/utils';
+const utils = require('./../common/utils');
+console.log(" utils ",utils)
 
 var util = {
   getRequest: (options) => {
