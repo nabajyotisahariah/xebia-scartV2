@@ -60,7 +60,14 @@ export const loginAction = (username, password) => {
     return (dispatch) => {
 
         dispatch(loginInitiateAction());
-        return fetch('http://localhost:9000/users/validate', {})
+
+        let formData = new FormData();
+        formData.append('name', username);
+        formData.append('password', password);
+        return fetch('http://localhost:9000/users/validate', {
+            body: formData,
+            method: "post"
+        })
         .then( res => res.json()).
         then( response => {
 

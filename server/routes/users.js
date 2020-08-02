@@ -7,8 +7,9 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/validate', function(req, res, next) {  
+router.post('/validate', function(req, res, next) {  
 
+  console.log(" req.validate ",req.body);
   request.get('https://xebiascart.herokuapp.com/users?username=amigo', function (error, response, body) {
     if(response && response.statusCode==200) {
       res.send(body)
