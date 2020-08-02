@@ -54,10 +54,42 @@ export const _productRequestAction = () => {
     }
 }
 //https://reactjs.org/docs/faq-ajax.html
-export const productRequestAction = () => {
+export const __productRequestAction = () => {
     return (dispatch) => {
         dispatch(productInitiateAction());
         fetch('https://xebiascart.herokuapp.com/products')
+        .then(res => res.json())
+        .then( response => {
+            console.log("productRequestAction ",response);
+            if(response.length > 0) {
+                const products = response;
+                if(products) {
+                    dispatch( productSuccessAction(products));
+                }
+                else {
+                    dispatch( productFaliureAction("No data"));
+                }
+            }
+            else {
+                dispatch( productFaliureAction("No data"));
+            }
+            
+            
+        })
+        .catch( error => {
+            console.log(error);
+            dispatch( productFaliureAction(error));
+        })
+        .finally(function () {
+            // always executed
+        });  
+    }
+}
+
+export const productRequestAction = () => {
+    return (dispatch) => {
+        dispatch(productInitiateAction());
+        fetch('http://localhost:9000/fetchProduct')
         .then(res => res.json())
         .then( response => {
             console.log("productRequestAction ",response);
