@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const request = require('request');
-//import util from './util';
+//import util from '../common/util';
 //console.log(" util ",util)
 
 var util = {
@@ -34,7 +34,7 @@ router.post('/validate', function(req, res, next) {
           //body : {}
     }
   util.getRequest(params).then (response => {
-    console.log(" res ",response)
+    //console.log(" res ",response)
     res.send(response);
   })
   
