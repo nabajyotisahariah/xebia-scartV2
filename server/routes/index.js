@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/fetchProduct', function(req, res, next) {  
+router.get('/product/listing', function(req, res, next) {  
   request.get('https://xebiascart.herokuapp.com/products', function (error, response, body) {
     console.error('error:', error); // Print the error if one occurred
     console.log('statusCode:',  response.statusCode); // Print the response status code if a response was received    
@@ -21,6 +21,33 @@ router.get('/fetchProduct', function(req, res, next) {
   });
   
 });
+
+router.get('/product/filter', function(req, res, next) {  
+  request.get('https://xebiascart.herokuapp.com/filters', function (error, response, body) {
+    if(response && response.statusCode==200) {
+      res.send(body)
+    }
+    else {
+      res.send("Error")
+    }     
+  });
+  
+});
+
+
+router.get('/product/search', function(req, res, next) {  
+  var key = 'a';
+  request.get('https://xebiascart.herokuapp.com/products?title='+key, function (error, response, body) {
+    if(response && response.statusCode==200) {
+      res.send(body)
+    }
+    else {
+      res.send("Error")
+    }     
+  });
+  
+});
+
 
 
 

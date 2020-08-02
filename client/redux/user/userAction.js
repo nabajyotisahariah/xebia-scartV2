@@ -23,7 +23,7 @@ export const failureRequestAction = (err) => {
 }
 
 
-export const loginAction = (username, password) => {
+export const __loginAction = (username, password) => {
 
     return (dispatch) => {
 
@@ -33,6 +33,39 @@ export const loginAction = (username, password) => {
 
             //console.log(response);
             const user = response.data[0];
+
+            //console.log("asyncLoginAction ",user," == ",user.username, " = ",user.password," == ",username," = ",password)
+            if(user.username == username && user.password == password) {
+                
+                localStorage.setItem("userInfo", JSON.stringify(user))
+                return dispatch( successRequestAction(user));
+            }
+            else {
+                return dispatch( failureRequestAction("Login Failed"));
+            } 
+            
+        })
+        .catch( error => {
+            console.log(error);
+            return dispatch(failureRequestAction(error));
+        })
+        .finally(function () {
+            // always executed
+        });  
+    }    
+}
+
+export const loginAction = (username, password) => {
+
+    return (dispatch) => {
+
+        dispatch(loginInitiateAction());
+        return fetch('http://localhost:9000/users/validate', {})
+        .then( res => res.json()).
+        then( response => {
+
+            console.log("loginAction ",response);
+            const user = response[0];
 
             //console.log("asyncLoginAction ",user," == ",user.username, " = ",user.password," == ",username," = ",password)
             if(user.username == username && user.password == password) {
