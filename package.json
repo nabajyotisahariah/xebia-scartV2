@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-     "webpack-dev-server": "webpack-dev-server",
-     "dev": "webpack-dev-server --mode=development --config ./webpack.client.js",
-     "prod": "webpack --mode=production --config ./webpack.client.js"
+    "webpack-dev-server": "webpack-dev-server",
+    "dev": "webpack-dev-server --mode=development --config ./webpack.client.js",
+    "prod": "webpack --mode=production --config ./webpack.client.js"
   },
   "repository": {
     "type": "git",
@@ -20,11 +20,15 @@
   },
   "homepage": "https://github.com/nabajyotisahariah/xebia-scartV2#readme",
   "dependencies": {
-    "css-loader": "^4.2.0",
-    "file-loader": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "style-loader": "^1.2.1"
+    "axios": "^0.19.2",
+    "react-autocomplete": "^1.8.1",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.0",
@@ -36,6 +40,9 @@
     "path": "^0.12.7",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "css-loader": "^4.2.0",
+    "file-loader": "^6.0.0",
+    "style-loader": "^1.2.1"
   }
 }
