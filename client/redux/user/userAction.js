@@ -64,15 +64,19 @@ export const loginAction = (username, password) => {
         let formData = new FormData();
         formData.append('name', username);
         formData.append('password', password);
+        //formData.append('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
+
         return fetch('http://localhost:9000/users/validate', {
             body: formData,
-            method: "post"
+            method: "post",
+            //headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            //headers : {"Content-Type": "application/json" }
         })
         .then( res => res.json()).
         then( response => {
 
             console.log("loginAction ",response);
-            const user = response[0];
+            const user = response.data[0];
 
             //console.log("asyncLoginAction ",user," == ",user.username, " = ",user.password," == ",username," = ",password)
             if(user.username == username && user.password == password) {

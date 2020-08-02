@@ -93,8 +93,8 @@ export const productRequestAction = () => {
         .then(res => res.json())
         .then( response => {
             console.log("productRequestAction ",response);
-            if(response.length > 0) {
-                const products = response;
+            if(response.status == 1) {
+                const products = response.data;
                 if(products) {
                     dispatch( productSuccessAction(products));
                 }
@@ -152,7 +152,7 @@ export const searchRequestAction = (key) => {
         .then( response => {
             console.log("searchRequestAction ", response);
             
-                const products = response;
+                const products = response.data;
                 if(products) {
                     dispatch({type: Type.PRODUCT_SEARCH,
                               payload: products
@@ -197,15 +197,15 @@ export const filterRequestAction = () => {
         .then(response => {
             
             console.log("filterRequestAction ", response);
-            
-            const products = response;
-            if(products) {
-                dispatch( {
-                    type: Type.PRODUCT_FILTER,
-                    payload:products
-                });
-            }               
-            
+            if(response.status == 1) {
+                const products = response.data;
+                if(products) {
+                    dispatch( {
+                        type: Type.PRODUCT_FILTER,
+                        payload:products
+                    });
+                }               
+            }
         })
         .catch( error => {
             console.log(error);
