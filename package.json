@@ -10,8 +10,9 @@
     "api": "node ./server/bin/www",
     "dev1": "concurrently \"npm run api\" \"npm run dev\"",
     "prod1": "concurrently \"npm run api\" \"npm run prod\"",
-    "development": "run-s development:*",
-    "development:build": "webpack --mode=production --config ./webpack.client.js",
+    "development": "run-s development:*",    
+    "development:delete": "pm2 delete xebiaApi xebiaWeb",
+    "development:build": "webpack --mode=production --config ./webpack.client.js --progress",
     "development:api": "NODE_ENV=production PORT=9000 pm2 start ./server/bin/www --name xebiaApi",
     "development:web": "pm2 start ./server.sh --name xebiaWeb"
   },
