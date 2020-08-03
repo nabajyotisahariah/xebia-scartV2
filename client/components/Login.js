@@ -46,7 +46,7 @@ class Login extends React.Component {
 
     return (
       <div className="loginpage">
-        <h1>Login page</h1>
+        <h1>Login page.....</h1>
         <input type="text" name="username" value={username} onChange={(e) => this.funcChange("username", e.target.value)}/>
         {" "}
         <br />
