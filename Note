@@ -1,15 +1,29 @@
-npm install
+#Windows Process Show & Kill
+#netstat -a -o -n|more ||| taskkill /F /PID 7076
+--------------------------
+install modules of client & server
+	npm install
 
-cd server / 
-npm install
+	cd server / 
+		npm install
 
 ------------------
-npm run api
-run run dev
+Run dev
+	npm run api			[http://localhost:9000/
+	run run dev			[http://localhost:8080/]
 
-or [server & client]
-npm run dev1
+	or [server & client]
+	npm run dev1		[ Web - http://localhost:8080/ & api http://localhost:9000/]
 
+or Run a build
+	[build server & client]
+		npm run prod1
+	Run build at a port
+		npm run serve1 [ Run to port 80]
+		Run -> http://localhost
+
+or Run via pm2 
+	pm2 run development [it will run concurrently all process & run at the port 80]
 ---------------------
 Running via pm2  [https://www.youtube.com/watch?v=PkhtCh0HcdE]
 	
